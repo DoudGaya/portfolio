@@ -13,11 +13,11 @@ export const Navbar = () => {
                     About Me
                 </span>
               </Link>
-              <Link className=' ' href={''}>
+              {/* <Link className=' ' href={''}>
                 <span className='hover:font-semibold'>
                     Resume
                 </span>
-              </Link>
+              </Link> */}
               {/* <Link className=' ' href={''}>
               <span className='hover:font-semibold'>
                 Contact
