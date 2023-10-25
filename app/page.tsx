@@ -1,9 +1,9 @@
-import { Button } from '@/components/ui/button'
-import { Github } from 'lucide-react'
-import { Linkedin } from 'lucide-react'
-import { X } from 'lucide-react'
+import {FaLinkedinIn} from 'react-icons/fa'
+import {AiOutlineGithub} from 'react-icons/ai'
+import {RiTwitterXFill} from 'react-icons/ri'
 import { ReactNode } from 'react';
 import Link from 'next/link';
+import { Projects } from '@/components/Projects';
 
 
 
@@ -17,17 +17,17 @@ const socials = [
   {
     name: "Github",
     link: "https://github.com/doudgaya",
-    icon: <Github />,
+    icon: <AiOutlineGithub />,
   },
   {
     name: "LinkedIn",
-    link: "https://github.com/doudgaya",
-    icon: <Linkedin />,
+    link: "https://www.linkedin.com/in/abdulrahman-dauda-b65526137/",
+    icon: <FaLinkedinIn />,
   },
   {
     name: "X",
-    link: "https://github.com/doudgaya",
-    icon: <X/>,
+    link: "https://twitter.com/doudgaya",
+    icon: <RiTwitterXFill/>,
   }
 ]
 
@@ -39,11 +39,11 @@ export default function Home() {
           <h1 className=' text-3xl font-bold'>Abdulrahman Dauda</h1>
           <p className=' font-semibold text-purple-400'>Husband to Amina Shuaibu</p>
           <p>Super Senior Software Engineer</p>
-          <div className=" flex space-x-6 pt-3">
+          <div className=" flex space-x-2 pt-3">
             {
               socials.map((social: Social) => {
                 return (
-                  <Link href={social.link} className=' p-2 rounded-md hover:bg-secondary'>
+                  <Link href={social.link} key={social.name} className=' p-2 rounded-md hover:bg-secondary'>
                     {social.icon}
                   </Link>
                 )
@@ -51,7 +51,7 @@ export default function Home() {
             }
           </div>
           <div className=" py-3">
-            <p>
+            <p className=' text-justify'>
               A detail-oriented software engineer with a passion for design and creativity.
               I love working with geniuses and teams of diverse skills to build scalable and
               disruptive digital products that'll impact the lives of millions across the globe.
@@ -65,7 +65,7 @@ export default function Home() {
           </div>
           {/* <Button>Learn More</Button> */}
         </div>
-        {/* <iframe src="https://chemcider.com" className=' w-full scale-75' frameborder="0"></iframe> */}
+            <Projects />
       </div>
    
     </main>
