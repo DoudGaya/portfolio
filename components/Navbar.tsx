@@ -15,16 +15,6 @@ export const Navbar = () => {
                     <p>About Me</p>
                 </span>
               </Link>
-              {/* <Link className=' ' href={''}>
-                <span className='hover:font-semibold'>
-                    Resume
-                </span>
-              </Link> */}
-              {/* <Link className=' ' href={''}>
-              <span className='hover:font-semibold'>
-                Contact
-              </span>
-            </Link> */}
         </div>
         <div className="">
           <div className="">
