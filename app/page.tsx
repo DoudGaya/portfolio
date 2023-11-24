@@ -43,9 +43,12 @@ export default function Home() {
           <div className=" py-3">
             <p className=' text-justify'>
               An innovative software and design engineer driven by a passion
-              for precision and creativity. I thrive on collaborating with brilliant minds and
-              diverse teams, channeling our collective skills to craft transformative, scalable digital products poised to revolutionize
-              the lives of millions worldwide.
+              for precision and creativity. There's nothing quite like collaborating
+              with brilliant minds and diverse teams. Together, we bring our unique
+              skills to the table, crafting digital products that aren't just scalable
+              but have the potential to change lives on a global scale. Let's team up
+              and engineer a brighter,
+              game-changing future, starting right now.
             </p>
           </div>
        </div>
