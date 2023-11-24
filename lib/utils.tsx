@@ -6,7 +6,7 @@ import nillarDark from '@/public/nillar_dark.png'
 import nillarLight from '@/public/nillar_light.png'
 import plasticDark from '@/public/plastic_dark.png'
 import plasticLight from '@/public/plastic_light.png'
-
+import { FaLaravel } from "react-icons/fa";
 import { SiTailwindcss } from "react-icons/si";
 import { TbBrandNextjs } from "react-icons/tb";
 import { SiVercel } from "react-icons/si";
@@ -130,5 +130,11 @@ export const techStack = [
     url: 'http://aws.amazon.com/',
     icon: <SiVercel className="" />
   },
+  {
+    id: 10,
+    title: 'Laravel',
+    url: 'https://laravel.com',
+    icon: <FaLaravel/>
+  }
   
 ]

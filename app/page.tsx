@@ -11,8 +11,10 @@ export default function Home() {
     <main className="">
       <div className=" max-w-2xl mx-auto my-2 space-y-2 border-t py-6 items-start w-full">
         <div className=" flex flex-col space-y-2">
-          <h1 className=' text-3xl font-bold'>Abdulrahman Dauda</h1>
+          <div className=" flex flex-col">
+             <h1 className=' text-3xl font-bold'>Abdulrahman Dauda</h1>
           <p>Senior Software Engineer</p>
+         </div>
            <div className=" flex space-x-2 ">
             {
               socials.map((social: Social) => {
