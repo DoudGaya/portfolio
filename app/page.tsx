@@ -1,35 +1,10 @@
-import {FaLinkedinIn} from 'react-icons/fa'
-import {AiOutlineGithub} from 'react-icons/ai'
-import {RiTwitterXFill} from 'react-icons/ri'
 import { ReactNode } from 'react';
 import Link from 'next/link';
 import { Projects } from '@/components/Projects';
+import { Stack } from './Stack';
+import { techStack } from '@/lib/utils';
+import { socials } from '@/lib/utils';
 
-
-
-interface Social {
-  name: string;
-  link: string;
-  icon: ReactNode
-}
-
-const socials = [
-  {
-    name: "Github",
-    link: "https://github.com/doudgaya",
-    icon: <AiOutlineGithub />,
-  },
-  {
-    name: "LinkedIn",
-    link: "https://www.linkedin.com/in/abdulrahman-dauda-b65526137/",
-    icon: <FaLinkedinIn />,
-  },
-  {
-    name: "X",
-    link: "https://twitter.com/doudgaya",
-    icon: <RiTwitterXFill/>,
-  }
-]
 
 export default function Home() {
   return (
@@ -38,18 +13,31 @@ export default function Home() {
         <div className=" flex flex-col space-y-2">
           <h1 className=' text-3xl font-bold'>Abdulrahman Dauda</h1>
           <p>Senior Software Engineer</p>
-          <p className='font-semibold text-primary'>Loving husband to Amena</p>
-          <div className=" flex space-x-2 pt-3">
+           <div className=" flex space-x-2 ">
             {
               socials.map((social: Social) => {
                 return (
-                  <Link href={social.link} key={social.name} className=' p-2 rounded-md hover:bg-secondary'>
+                  <Link href={social.link} target='_blank' key={social.name} className=' p-2 rounded-md hover:bg-secondary'>
                     {social.icon}
                   </Link>
                 )
               })
             }
           </div>
+          {/* <p className='font-semibold text-primary'>Loving husband to Amena</p> */}
+          <div className=" py-6 space-y-3 border-y flex flex-col ">
+            <p>Tech Stack</p>
+            <div className="flex flex-wrap md:items-start items-center gap-4">
+              {
+                techStack.map( single => <Stack key={single.id} stack={single} /> )
+              }
+            </div>
+
+          </div>
+          <div className=" grid grid-cols-4">
+
+          </div>
+        
           <div className=" py-3">
             <p className=' text-justify'>
               A detail-oriented software engineer with a passion for design and creativity.

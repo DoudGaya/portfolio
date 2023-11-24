@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Abdulrahman Dauda Gaya',
-  description: 'Super Senior Software Engineer with design ',
+  description: 'Senior Software Engineer and a Product Designer',
 }
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
         >
-          <div className="flex min-h-screen flex-col p-16">
+          <div className="flex min-h-screen flex-col py-16 px-10">
           <Navbar />
             {children}
           </div>
