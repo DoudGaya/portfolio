@@ -1,11 +1,8 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
 import { Projects } from '@/components/Projects';
-import { Stack } from './Stack';
-import { techStack } from '@/lib/utils';
 import { socials } from '@/lib/utils';
 import { TechStack } from '@/components/TechStack';
-import Image from 'next/image';
 import design  from '@/public/design.jpg'
 import code  from '@/public/code.jpg'
 
@@ -45,7 +42,7 @@ export default function Home() {
               and engineer a brighter, game-changing future, starting right now.
             </p>
           </div>   
-          
+
          <div className=" border-y py-4 space-y-4 w-full flex-col">
           <p className=' font-bold text-2xl'>Technical Courses</p>
           <div className=" grid grid-cols-2 gap-4">

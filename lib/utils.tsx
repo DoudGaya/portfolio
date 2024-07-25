@@ -104,7 +104,7 @@ export const techStack = [
   {
     id: 3,
     title: 'TypeScript',
-    url: 'https://typescript.org',
+    url: 'https://www.typescriptlang.org/',
     icon: <SiTypescript className=""size={18} />
   },
   {
