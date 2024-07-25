@@ -12,8 +12,8 @@ export default function Home() {
     <main className="">
       <div className=" max-w-2xl mx-auto my-2 space-y-2 border-t py-6 items-start w-full">
         <div className=" flex flex-col space-y-2">
-          <div className=" flex flex-col">
-              <h1 className=' text-3xl font-bold'>Abdulrahman Dauda Gaya</h1>
+          <div className=" flex flex-col space-y-0.5">
+              <h1 className=' md:text-3xl text-2xl font-bold'>Abdulrahman Dauda Gaya</h1>
               <p>Senior Software Engineer</p>
          </div>
          <div className=" flex flex-row">
@@ -45,7 +45,7 @@ export default function Home() {
 
          <div className=" border-t py-4 space-y-4 w-full flex-col">
           <p className=' font-bold text-2xl'>Technical Courses</p>
-          <div className=" grid grid-cols-2 gap-4">
+          <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
             <Link href={'/design'} className=" flex flex-col hover:bg-gray-200 dark:bg-gray-700/30 p-3 rounded-xl space-y-3">
                 <p className=' text-lg font-bold text-gray-500'>Design Course</p>
                 <div className=' w-ful h-[200px] hover:bg-gray-900/70 dark:bg-blend-overlay object-cover object-center rounded-lg' style={{ backgroundImage: `url(${design.src})` }}></div>
