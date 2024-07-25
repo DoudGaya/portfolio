@@ -11,23 +11,17 @@ import { SiTailwindcss } from "react-icons/si";
 import { TbBrandNextjs } from "react-icons/tb";
 import { SiVercel } from "react-icons/si";
 import { FaReact } from "react-icons/fa";
-import { FaAws } from "react-icons/fa6";
 import { GrNode } from "react-icons/gr";
 import { FaPython } from "react-icons/fa";
 import { SiTypescript } from "react-icons/si";
 import { SiFastapi } from "react-icons/si";
 import { SiPrisma } from "react-icons/si";
-
 import {FaLinkedinIn} from 'react-icons/fa'
 import {AiOutlineGithub} from 'react-icons/ai'
 import { RiTwitterXFill } from 'react-icons/ri'
-
 import stablebricsWhite from '@/public/stablebricks-white.png'
 import stablebricksBlack from '@/public/stablebrics-black.png'
 
-
-
- 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
@@ -83,10 +77,7 @@ export const projects = [
     url: 'https://plasticsurgeona.com',
     description: `Turkey Based Plastic Surgeons connections`,
   },
-  
 ]
-
-
 
 export const techStack = [
   {
@@ -131,12 +122,6 @@ export const techStack = [
     url: 'https://fastapi.tiangolo.com/',
     icon: <SiFastapi className=""size={18} />
   },
-  // {
-  //   id: 8,
-  //   title: 'AWS',
-  //   url: 'http://aws.amazon.com/',
-  //   icon: <FaAws className=""size={18} />
-  // },
   {
     id: 9,
     title: 'Vercel',

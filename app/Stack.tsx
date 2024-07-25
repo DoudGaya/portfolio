@@ -10,7 +10,7 @@ export const Stack = ( {
 } ) => {
   return (
     <Link href={stack.url} target='_blank' className={`${className} `}>
-            <span className="cursor-pointer p-3 rounded-md hover:bg-secondary" >
+            <span className="cursor-pointer p-2 rounded-md hover:bg-secondary" >
               {stack.icon}
       </span>
     </Link>

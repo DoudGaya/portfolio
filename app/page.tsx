@@ -38,12 +38,12 @@ export default function Home() {
               Software and design engineer driven by a passion
               for precision and creativity. Join our  Together, we bring our unique
               skills to the table, crafting digital products that aren't just scalable
-              but have the potential to change lives on a global scale. Let's team up
-              and engineer a brighter, game-changing future, starting right now.
+              but have the potential to change lives on a global scale. 
+              Let's team up and engineer a brighter, game-changing future, starting right now.
             </p>
           </div>   
 
-         <div className=" border-y py-4 space-y-4 w-full flex-col">
+         <div className=" border-t py-4 space-y-4 w-full flex-col">
           <p className=' font-bold text-2xl'>Technical Courses</p>
           <div className=" grid grid-cols-2 gap-4">
             <Link href={'/design'} className=" flex flex-col hover:bg-gray-200 dark:bg-gray-700/30 p-3 rounded-xl space-y-3">
@@ -58,8 +58,8 @@ export default function Home() {
          </div>
        </div>
        
-        <div className=" my-3 flex flex-col space-y-3 ">
-          <h3 className=' text-2xl font-semibold border-b py-2'>Creator of</h3>
+        <div className=" my-3 flex border-y flex-col space-y-3 ">
+          <h3 className=' text-2xl font-semibold py-2'>Creator of</h3>
             <Projects />
         </div>
       </div>
