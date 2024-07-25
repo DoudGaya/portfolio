@@ -16,10 +16,14 @@ import { GrNode } from "react-icons/gr";
 import { FaPython } from "react-icons/fa";
 import { SiTypescript } from "react-icons/si";
 import { SiFastapi } from "react-icons/si";
+import { SiPrisma } from "react-icons/si";
 
 import {FaLinkedinIn} from 'react-icons/fa'
 import {AiOutlineGithub} from 'react-icons/ai'
 import { RiTwitterXFill } from 'react-icons/ri'
+
+import stablebricsWhite from '@/public/stablebricks-white.png'
+import stablebricksBlack from '@/public/stablebrics-black.png'
 
 
 
@@ -48,12 +52,20 @@ export const socials = [
 
 export const projects = [
   {
+    id: '4',
+    name: 'Stablebricks',
+    imgLight: stablebricsWhite,
+    imgDark: stablebricksBlack,
+    url: 'https://stablebricks.com',
+    description: `Nigerian Realestate Investment App`,
+  },
+  {
     id: '1',
     name: 'Chemcider Inc',
     url: 'https://chemcider.com',
     imgLight: chemciderLight,
     imgDark: chemciderDark,
-    description: `Learning resource for scientists and engineers`,
+    description: `Scientific and Medical Resurce Suppliers`,
   },
   {
     id: '2',
@@ -70,7 +82,8 @@ export const projects = [
     imgDark: plasticDark,
     url: 'https://plasticsurgeona.com',
     description: `Turkey Based Plastic Surgeons connections`,
-  }
+  },
+  
 ]
 
 
@@ -80,61 +93,67 @@ export const techStack = [
     id: 1,
     title: 'Node JS',
     url: 'https://nodejs.org',
-    icon: <GrNode className="" />
+    icon: <GrNode className=""size={18} />
   },
   {
     id: 2,
     title: 'Python',
     url: 'https://python.org',
-    icon: <FaPython className="" />
+    icon: <FaPython className=""size={18} />
   },
   {
     id: 3,
     title: 'TypeScript',
     url: 'https://typescript.org',
-    icon: <SiTypescript className="" />
+    icon: <SiTypescript className=""size={18} />
   },
   {
     id: 4,
     title: 'React',
     url: 'https://react.dev',
-    icon: <FaReact className="" />
+    icon: <FaReact className=""size={18} />
   },
   {
     id: 5,
     title: 'Next JS',
     url: 'https://nextjs.org',
-    icon: <TbBrandNextjs className="" />
+    icon: <TbBrandNextjs className=""size={18} />
   },
   {
     id: 6,
     title: 'TailwindCSS',
     url:' https://tailwindcss.com',
-    icon: <SiTailwindcss className="" />
+    icon: <SiTailwindcss className=""size={18} />
   },
   {
     id: 7,
     title: 'FastAPI',
     url: 'https://fastapi.tiangolo.com/',
-    icon: <SiFastapi className="" />
+    icon: <SiFastapi className=""size={18} />
   },
-  {
-    id: 8,
-    title: 'AWS',
-    url: 'http://aws.amazon.com/',
-    icon: <FaAws className="" />
-  },
+  // {
+  //   id: 8,
+  //   title: 'AWS',
+  //   url: 'http://aws.amazon.com/',
+  //   icon: <FaAws className=""size={18} />
+  // },
   {
     id: 9,
     title: 'Vercel',
     url: 'http://aws.amazon.com/',
-    icon: <SiVercel className="" />
+    icon: <SiVercel className=""size={18} />
   },
   {
     id: 10,
     title: 'Laravel',
     url: 'https://laravel.com',
-    icon: <FaLaravel/>
+    icon: <FaLaravel size={18} />
+  },
+  {
+    id: 11,
+    title: 'Prisma',
+    url: 'https://www.prisma.io/',
+    icon: <SiPrisma size={18} />
   }
   
 ]
