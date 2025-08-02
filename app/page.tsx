@@ -9,61 +9,75 @@ import code  from '@/public/code.jpg'
 
 export default function Home() {
   return (
-    <main className="">
-      <div className=" max-w-2xl mx-auto my-2 space-y-2 border-t py-6 items-start w-full">
-        <div className=" flex flex-col space-y-2">
-          <div className=" flex flex-col space-y-0.5">
-              <h1 className=' md:text-3xl text-2xl font-bold'>Abdulrahman Dauda Gaya</h1>
-              <p>Senior Software Engineer</p>
-         </div>
-         <div className=" flex flex-row">
-         <div className=" flex space-x-2 items-center  ">
-            {
-              socials.map((social: Social) => {
-                return (
-                  <Link href={social.link} target='_blank' key={social.name} className=' p-2 rounded-md hover:bg-secondary'>
-                    {social.icon}
-                  </Link>
-                )
-              })
-            }
-            <a href='mailto:doudgaya@gmail.com' className=" hover:cursor-pointer  flex items-center justify-center">
-              <span className=' bg-gray-300 dark:bg-gray-800 py-0.5 hover:dark:bg-gray-900 transition-colors ease-in-out px-3 rounded-full'>doudgaya@gmail.com</span>
+    <main className="bg-background min-h-screen">
+      <div className="max-w-2xl mx-auto py-12 px-4 w-full">
+        {/* Hero Section */}
+        <section className="flex flex-col items-start gap-6 mb-8">
+          <div>
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-1">Abdulrahman Dauda Gaya</h1>
+            <p className="text-muted-foreground text-lg">Senior Software Engineer</p>
+          </div>
+          <div className="flex items-center gap-3">
+            {socials.map((social: Social) => (
+              <Link
+                href={social.link}
+                target="_blank"
+                key={social.name}
+                aria-label={social.name}
+                className="p-2 rounded-full hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary"
+              >
+                {social.icon}
+              </Link>
+            ))}
+            <a
+              href="mailto:doudgaya@gmail.com"
+              className="ml-2 px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Email Abdulrahman Dauda Gaya"
+            >
+              Email
             </a>
           </div>
-         </div>
-         <TechStack /> 
-        <div className=" py-3">
-            <p className=' text-justify text-sm '>
-              Software and design engineer driven by a passion
-              for precision and creativity. Join our  Together, we bring our unique
-              skills to the table, crafting digital products that aren't just scalable
-              but have the potential to change lives on a global scale. 
-              Let's team up and engineer a brighter, game-changing future, starting right now.
-            </p>
-          </div>   
+        </section>
 
-         <div className=" border-t py-4 space-y-4 w-full flex-col">
-          <p className=' font-bold text-2xl'>Technical Courses</p>
-          <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Link href={'/design'} className=" flex flex-col hover:bg-gray-200 dark:bg-gray-700/30 p-3 rounded-xl space-y-3">
-                <p className=' text-lg font-bold text-gray-500'>Design Course</p>
-                <div className=' w-ful h-[200px] hover:bg-gray-900/70 dark:bg-blend-overlay object-cover object-center rounded-lg' style={{ backgroundImage: `url(${design.src})` }}></div>
+        {/* About Section */}
+        <section className="mb-10">
+          <p className="text-base text-muted-foreground leading-relaxed">
+            I build robust, scalable digital products with a focus on precision, creativity, and impact. My experience spans software engineering and design, delivering solutions that empower users and drive business value. Let’s collaborate to create something meaningful.
+          </p>
+        </section>
+
+        {/* Tech Stack */}
+        <section className="mb-10">
+          <TechStack />
+        </section>
+
+        {/* Courses Section */}
+        <section className="mb-12">
+          <h2 className="font-semibold text-xl mb-4">Technical Courses</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Link href="/design" className="group flex flex-col border border-border hover:border-primary/40 transition rounded-lg overflow-hidden">
+              <div className="h-40 bg-cover bg-center" style={{ backgroundImage: `url(${design.src})` }} />
+              <div className="p-4">
+                <p className="text-lg font-semibold text-gray-700 dark:text-gray-300 group-hover:text-primary">Design Course</p>
+                <p className="text-sm text-muted-foreground mt-1">UI/UX, branding, and product design essentials for developers and creators.</p>
+              </div>
             </Link>
-            <Link href={'/code'} className=" flex flex-col hover:bg-gray-200 dark:bg-gray-700/30 p-3 rounded-xl space-y-3">
-              <p className=' text-lg font-bold text-gray-500'>Programming Course</p>
-                <div className=' w-ful h-[200px] hover:bg-gray-900/70 dark:bg-blend-overlay object-cover object-center rounded-lg' style={{ backgroundImage: `url(${code.src})` }}> </div>
+            <Link href="/code" className="group flex flex-col border border-border hover:border-primary/40 transition rounded-lg overflow-hidden">
+              <div className="h-40 bg-cover bg-center" style={{ backgroundImage: `url(${code.src})` }} />
+              <div className="p-4">
+                <p className="text-lg font-semibold text-gray-700 dark:text-gray-300 group-hover:text-primary">Programming Course</p>
+                <p className="text-sm text-muted-foreground mt-1">Modern programming, best practices, and building scalable applications.</p>
+              </div>
             </Link>
           </div>
-         </div>
-       </div>
-       
-        <div className=" my-3 flex border-y flex-col space-y-3 ">
-          <h3 className=' text-2xl font-semibold py-2'>Creator of</h3>
-            <Projects />
-        </div>
+        </section>
+
+        {/* Projects Section */}
+        <section className="py-8 border-t">
+          <h2 className="text-2xl font-semibold mb-6">Projects</h2>
+          <Projects />
+        </section>
       </div>
-   
     </main>
-  )
+  );
 }
