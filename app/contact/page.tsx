@@ -18,8 +18,8 @@ const contactMethods = [
   },
   {
     type: 'Phone/WhatsApp',
-    value: '+234 XXX XXX XXXX',
-    href: 'tel:+234XXXXXXXXX',
+    value: '+234 9077490181',
+    href: 'tel:+2349077490181',
     description: 'Direct contact for urgent matters',
     response: 'Same day'
   },
