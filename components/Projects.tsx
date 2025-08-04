@@ -21,7 +21,7 @@ export const Projects = () => {
       {
         projects.map((project: Project) => {
           return (
-            <Link href={project.url} target='_blank' className="group flex flex-col border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300" key={project.id}>
+            <Link href={project.url} target='_blank' className="group flex flex-col border dark:border-gray-700  rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300" key={project.id}>
               <div className="relative h-48 bg-gray-100 dark:bg-gray-800">
                 <Image 
                   src={project.imgLight} 
@@ -56,7 +56,7 @@ export const Projects = () => {
                   </div>
                 </div>
                 
-                <div className="pt-3 border-t">
+                <div className="pt-3 border-t dark:border-gray-700 ">
                   <p className="text-sm font-medium text-primary">{project.impact}</p>
                 </div>
               </div>

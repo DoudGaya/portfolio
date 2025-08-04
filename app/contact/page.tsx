@@ -83,7 +83,7 @@ export default function ContactPage() {
               <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 {contactMethods.map((method, index) => (
-                  <div key={index} className="p-6 border rounded-lg hover:shadow-md transition-shadow">
+                  <div key={index} className="p-6 border dark:border-gray-700  rounded-lg hover:shadow-md transition-shadow">
                     <h3 className="font-semibold text-lg mb-2">{method.type}</h3>
                     <p className="text-primary font-medium mb-2">
                       {method.href.startsWith('http') || method.href.startsWith('mailto:') || method.href.startsWith('tel:') ? (
@@ -110,7 +110,7 @@ export default function ContactPage() {
                     href={social.link}
                     target="_blank"
                     key={social.name}
-                    className="flex items-center gap-3 p-4 border rounded-lg hover:shadow-md transition-shadow"
+                    className="flex items-center gap-3 p-4 border dark:border-gray-700  rounded-lg hover:shadow-md transition-shadow"
                   >
                     {social.icon}
                     <span className="font-medium">{social.name}</span>
@@ -177,7 +177,7 @@ export default function ContactPage() {
             </section>
 
             {/* Response Guarantee */}
-            <section className="p-6 border rounded-lg">
+            <section className="p-6 border dark:border-gray-700  rounded-lg">
               <h3 className="font-semibold mb-2">Response Guarantee</h3>
               <p className="text-sm text-muted-foreground">
                 I respond to all project inquiries within 24 hours. If you don't hear back, 

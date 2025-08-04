@@ -91,11 +91,11 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-6">About Abdulrahman Dauda Gaya</h2>
-              <p className="text-lg text-muted-foreground mb-4">
+              <p className="text-md text-muted-foreground mb-4">
                 CTO at Jigawa State ICT with 8+ years of experience building web platforms for startups and enterprises. 
                 I specialize in turning complex business requirements into clean, scalable code.
               </p>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-md text-muted-foreground mb-6">
                 My clients include SaaS founders, fintech startups, and real estate businesses across Nigeria, UK, and the US. 
                 I've helped them raise funding, scale their platforms, and achieve sustainable growth.
               </p>
@@ -135,7 +135,7 @@ export default function Home() {
               <div className="text-2xl font-bold text-primary mb-2">$5,000 - $15,000</div>
               <div className="text-sm text-muted-foreground">4-8 weeks delivery</div>
             </div>
-            <div className="p-6 border rounded-lg hover:shadow-lg transition-shadow bg-primary/5">
+            <div className="p-6 border dark:border-gray-700  rounded-lg hover:shadow-lg transition-shadow bg-primary/5">
               <h3 className="text-xl font-semibold mb-3">Full Platform Build</h3>
               <p className="text-muted-foreground mb-4">
                 Complete web application with admin dashboard, payments, and integrations.
@@ -143,7 +143,7 @@ export default function Home() {
               <div className="text-2xl font-bold text-primary mb-2">$15,000 - $30,000</div>
               <div className="text-sm text-muted-foreground">8-16 weeks delivery</div>
             </div>
-            <div className="p-6 border rounded-lg hover:shadow-lg transition-shadow">
+            <div className="p-6 border dark:border-gray-700  rounded-lg hover:shadow-lg transition-shadow">
               <h3 className="text-xl font-semibold mb-3">Scale & Optimize</h3>
               <p className="text-muted-foreground mb-4">
                 Performance optimization, infrastructure scaling, and team augmentation.
@@ -175,7 +175,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold mb-4">What Clients Say</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 border rounded-lg">
+            <div className="p-6 border dark:border-gray-700 rounded-lg">
               <div className="flex mb-4">
                 {[...Array(5)].map((_, i) => (
                   <span key={i} className="text-yellow-400">★</span>
@@ -188,7 +188,7 @@ export default function Home() {
               <div className="font-semibold">Sarah Johnson</div>
               <div className="text-sm text-muted-foreground">CEO, PropTech Startup</div>
             </div>
-            <div className="p-6 border rounded-lg">
+            <div className="p-6 border dark:border-gray-700 rounded-lg">
               <div className="flex mb-4">
                 {[...Array(5)].map((_, i) => (
                   <span key={i} className="text-yellow-400">★</span>
@@ -220,7 +220,7 @@ export default function Home() {
               <a href="mailto:doudgaya@gmail.com">Email Me</a>
             </Button>
           </div>
-          <div className="mt-8 p-6 border rounded-lg bg-background">
+          <div className="mt-8 p-6 border dark:border-gray-700  rounded-lg bg-background">
             <h3 className="font-semibold mb-2">Quick Response Guarantee</h3>
             <p className="text-muted-foreground">
               I respond to all project inquiries within 24 hours. Let's turn your idea into reality.
