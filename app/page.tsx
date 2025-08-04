@@ -25,20 +25,20 @@ export default function Home() {
     ],
     "worksFor": {
       "@type": "Organization",
-      "name": "Jigawa State ICT"
+      "name": "Jigawa State ICT and Digital Economy",
     },
     "offers": [
       {
         "@type": "Service",
         "name": "MVP Development",
         "description": "Get your product to market fast with a robust, scalable foundation",
-        "priceRange": "$5,000 - $15,000"
+        "priceRange": "$5,000 - $10,000"
       },
       {
         "@type": "Service", 
         "name": "Full Platform Build",
         "description": "Complete web application with admin dashboard, payments, and integrations",
-        "priceRange": "$15,000 - $30,000"
+        "priceRange": "$10,000 - $15,000"
       }
     ]
   };
@@ -132,7 +132,7 @@ export default function Home() {
               <p className="text-muted-foreground mb-4">
                 Get your product to market fast with a robust, scalable foundation.
               </p>
-              <div className="text-2xl font-bold text-primary mb-2">$5,000 - $15,000</div>
+              <div className="text-2xl font-bold text-primary mb-2">$5,000 - $10,000</div>
               <div className="text-sm text-muted-foreground">4-8 weeks delivery</div>
             </div>
             <div className="p-6 border dark:border-gray-700  rounded-lg hover:shadow-lg transition-shadow bg-primary/5">
@@ -140,7 +140,7 @@ export default function Home() {
               <p className="text-muted-foreground mb-4">
                 Complete web application with admin dashboard, payments, and integrations.
               </p>
-              <div className="text-2xl font-bold text-primary mb-2">$15,000 - $30,000</div>
+              <div className="text-2xl font-bold text-primary mb-2">$10,000 - $15,000</div>
               <div className="text-sm text-muted-foreground">8-16 weeks delivery</div>
             </div>
             <div className="p-6 border dark:border-gray-700  rounded-lg hover:shadow-lg transition-shadow">

@@ -5,7 +5,7 @@ const services = [
   {
     id: 'mvp',
     title: 'MVP Development',
-    price: '$5,000 - $15,000',
+    price: '$5,000 - $10,000',
     duration: '4-8 weeks',
     description: 'Get your product to market fast with a robust, scalable foundation that can grow with your business.',
     features: [
@@ -26,7 +26,7 @@ const services = [
   {
     id: 'full-platform',
     title: 'Full Platform Build',
-    price: '$15,000 - $30,000',
+    price: '$10,000 - $15,000',
     duration: '8-16 weeks',
     description: 'Complete web application with advanced features, admin dashboard, integrations, and everything needed to scale.',
     features: [
