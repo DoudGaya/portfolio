@@ -1,0 +1,21 @@
+{
+  "name": "abdulrahman-portfolio",
+  "title": "Abdulrahman Portfolio",
+  "projectId": "your-project-id",
+  "dataset": "production",
+  "plugins": [
+    "@sanity/vision"
+  ],
+  "tools": [
+    {
+      "name": "vision",
+      "title": "Vision"
+    }
+  ],
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema.js"
+    }
+  ]
+}

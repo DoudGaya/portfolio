@@ -11,51 +11,14 @@ interface Social {
 }
 
 export default function Home() {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Abdulrahman Dauda Gaya",
-    "jobTitle": "Full Stack Developer & CTO",
-    "description": "Full-stack developer & CTO with 8+ years building SaaS, fintech, and real estate platforms",
-    "url": "https://doudgaya.com",
-    "sameAs": [
-      "https://github.com/doudgaya",
-      "https://linkedin.com/in/doudgaya",
-      "https://twitter.com/doudgaya"
-    ],
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Jigawa State ICT"
-    },
-    "offers": [
-      {
-        "@type": "Service",
-        "name": "MVP Development",
-        "description": "Get your product to market fast with a robust, scalable foundation",
-        "priceRange": "$5,000 - $15,000"
-      },
-      {
-        "@type": "Service", 
-        "name": "Full Platform Build",
-        "description": "Complete web application with admin dashboard, payments, and integrations",
-        "priceRange": "$15,000 - $30,000"
-      }
-    ]
-  };
-
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-      <main className="bg-background">
+    <main className="bg-background">
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
             I help startups build fast,{' '}
-            <span className="text-primary">scalable web and mobile platforms</span>
+            <span className="text-primary">scalable web platforms</span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
             Full-stack developer & CTO with 8+ years building SaaS, fintech, and real estate platforms. 
@@ -127,7 +90,7 @@ export default function Home() {
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-6 border dark:border-gray-700 rounded-lg hover:shadow-lg transition-shadow">
+            <div className="p-6 border rounded-lg hover:shadow-lg transition-shadow">
               <h3 className="text-xl font-semibold mb-3">MVP Development</h3>
               <p className="text-muted-foreground mb-4">
                 Get your product to market fast with a robust, scalable foundation.
@@ -228,20 +191,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Blog Preview */}
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Latest Insights</h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            Startup guides, SaaS development tips, and success stories from the field
-          </p>
-          <Button asChild size="lg" className="px-8">
-            <Link href="/blog">Read My Blog</Link>
-          </Button>
-        </div>
-      </section>
     </main>
-    </>
   );
 }

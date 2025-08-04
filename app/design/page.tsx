@@ -1,12 +1,7 @@
-import { ReactNode } from 'react';
-import Link from 'next/link';
-import { Projects } from '@/components/Projects';
-import { techStack } from '@/lib/utils';
-import { socials } from '@/lib/utils';
-import { TechStack } from '@/components/TechStack';
 import Image from 'next/image';
 import design  from '@/public/design.jpg'
-import code  from '@/public/code.jpg'
+
+
 
 
 export default function Design() {
@@ -40,7 +35,6 @@ export default function Design() {
             </li>
           </ul>
         </section>
-
         <section className="mb-10">
           <h2 className="text-xl font-semibold mb-4">Sample Reference</h2>
           <div className="rounded-lg overflow-hidden border border-border bg-muted/30 flex items-center justify-center">

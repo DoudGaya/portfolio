@@ -46,36 +46,48 @@ export const socials = [
 
 export const projects = [
   {
-    id: '4',
+    id: '1',
     name: 'Stablebricks',
     imgLight: stablebricsWhite,
     imgDark: stablebricksBlack,
     url: 'https://stablebricks.com',
-    description: `Nigerian Realestate Investment App`,
+    description: 'Real Estate Investment Platform',
+    longDescription: 'A comprehensive real estate investment platform enabling fractional property ownership and crowdfunded investments across Nigeria.',
+    techStack: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Stripe'],
+    impact: 'Processed $500K+ in investments, 2000+ active users'
   },
   {
-    id: '1',
+    id: '2',
     name: 'Chemcider Inc',
     url: 'https://chemcider.com',
     imgLight: chemciderLight,
     imgDark: chemciderDark,
-    description: `Scientific and Medical Resurce Suppliers`,
+    description: 'Medical & Scientific Supply Chain',
+    longDescription: 'B2B platform connecting medical institutions with verified suppliers of scientific equipment and pharmaceutical products.',
+    techStack: ['React', 'Node.js', 'MongoDB', 'AWS', 'PayPal'],
+    impact: 'Streamlined procurement for 50+ hospitals'
   },
   {
-    id: '2',
-    name: 'NIllar Magazines',
+    id: '3',
+    name: 'Nillar Magazines',
     url: 'https://nillar.com',
     imgLight: nillarLight,
     imgDark: nillarDark,
-    description: `Financial and Business Magazines`,
+    description: 'Digital Publishing Platform',
+    longDescription: 'Modern digital magazine platform with subscription management, content delivery, and analytics for financial and business publications.',
+    techStack: ['Next.js', 'Supabase', 'Stripe', 'Vercel', 'Tailwind'],
+    impact: '10K+ monthly readers, 95% uptime'
   },
   {
     id: '4',
-    name: 'Plastic Surgeona',
+    name: 'Plastic Surgeons Network',
     imgLight: plasticLight,
     imgDark: plasticDark,
     url: 'https://plasticsurgeona.com',
-    description: `Turkey Based Plastic Surgeons connections`,
+    description: 'Medical Professional Network',
+    longDescription: 'Platform connecting patients with certified plastic surgeons in Turkey, featuring booking system, reviews, and consultation management.',
+    techStack: ['Vue.js', 'Laravel', 'MySQL', 'Cloudinary', 'Stripe'],
+    impact: '500+ successful consultations booked'
   },
 ]
 

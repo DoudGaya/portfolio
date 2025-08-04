@@ -14,6 +14,20 @@ import {
 
 export function ModeToggle() {
   const { setTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return (
+      <Button variant={'secondary'} className=" outline-none focus:outline-none" size="icon">
+        <SunIcon className="h-[1.2rem] w-[1rem]" />
+        <span className="sr-only">Toggle theme</span>
+      </Button>
+    )
+  }
 
   return (
     <DropdownMenu>
