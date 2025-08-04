@@ -2,6 +2,10 @@ import Link from 'next/link'
 import { client } from '@/lib/sanity'
 import Image from 'next/image'
 import { urlFor } from '@/lib/sanity'
+import { estimateReadingTime, formatReadingTime, extractTextFromBlocks } from '@/lib/reading-time'
+
+// Revalidate every 60 seconds
+export const revalidate = 60
 
 async function getBlogPosts() {
   const posts = await client.fetch(`
@@ -18,7 +22,9 @@ async function getBlogPosts() {
         image
       }
     }
-  `)
+  `, {}, {
+    next: { revalidate: 60 }
+  })
   return posts
 }
 
@@ -27,61 +33,70 @@ export default async function BlogPage() {
 
   return (
     <main className="bg-background min-h-screen">
-      <div className="max-w-4xl mx-auto py-12 px-4">
+      <div className="max-w-6xl mx-auto py-16 px-4">
         {/* Header */}
-        <section className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
-            Startup & SaaS Development Blog
+        <section className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Latest Insights
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Insights, guides, and success stories from building scalable web platforms for startups
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Thoughts on web development, SaaS architecture, and building scalable platforms
           </p>
         </section>
 
         {/* Blog Posts Grid */}
-        <section className="grid md:grid-cols-2 gap-8">
+        <section className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
           {posts.map((post: any) => (
             <Link 
               href={`/blog/${post.slug.current}`} 
               key={post._id}
-              className="group border rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+              className="group bg-card border border-border rounded-xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300"
             >
               {post.mainImage && (
-                <div className="relative h-48 w-full">
+                <div className="relative h-56 w-full overflow-hidden">
                   <Image
                     src={urlFor(post.mainImage).url()}
                     alt={post.mainImage.alt || post.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               )}
               <div className="p-6">
                 <div className="flex flex-wrap gap-2 mb-3">
-                  {post.categories?.map((category: string) => (
+                  {post.categories?.slice(0, 2).map((category: string) => (
                     <span 
                       key={category} 
-                      className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md"
+                      className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full"
                     >
                       {category}
                     </span>
                   ))}
                 </div>
-                <h2 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                <h2 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2">
                   {post.title}
                 </h2>
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-                  {post.excerpt}
-                </p>
-                <div className="flex items-center justify-between text-sm text-muted-foreground">
-                  <span>
-                    {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
+                {post.excerpt && (
+                  <p className="text-muted-foreground mb-4 line-clamp-3 leading-relaxed">
+                    {post.excerpt}
+                  </p>
+                )}
+                <div className="flex items-center justify-between pt-4 border-t border-border">
+                  <div className="flex items-center space-x-3 text-sm text-muted-foreground">
+                    <time>
+                      {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric'
+                      })}
+                    </time>
+                    <span>•</span>
+                    <span>{formatReadingTime(estimateReadingTime(extractTextFromBlocks(post.body)))}</span>
+                  </div>
+                  <span className="text-sm font-medium text-primary group-hover:translate-x-1 transition-transform">
+                    Read more →
                   </span>
-                  <span>Read more →</span>
                 </div>
               </div>
             </Link>

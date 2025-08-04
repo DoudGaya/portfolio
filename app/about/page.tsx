@@ -25,7 +25,7 @@ export default function AboutPage() {
             />
           </div>
           <h1 className="text-3xl md:text-5xl font-bold mb-4">
-            About Abdulrahman Dauda Gaya
+            Abdulrahman Dauda Gaya
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Full-stack developer & CTO passionate about building scalable web platforms that drive business growth.

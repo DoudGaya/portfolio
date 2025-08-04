@@ -71,3 +71,98 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Enhanced Blog Typography */
+@layer components {
+  .prose-enhanced {
+    @apply text-foreground;
+  }
+  
+  .prose-enhanced h1,
+  .prose-enhanced h2,
+  .prose-enhanced h3,
+  .prose-enhanced h4,
+  .prose-enhanced h5,
+  .prose-enhanced h6 {
+    @apply text-foreground font-bold;
+    scroll-margin-top: 2rem;
+  }
+  
+  .prose-enhanced h1 {
+    @apply text-4xl mb-8 mt-12 leading-tight;
+  }
+  
+  .prose-enhanced h2 {
+    @apply text-3xl mb-6 mt-10 leading-tight;
+  }
+  
+  .prose-enhanced h3 {
+    @apply text-2xl mb-5 mt-8 leading-tight;
+  }
+  
+  .prose-enhanced h4 {
+    @apply text-xl mb-4 mt-6 leading-tight;
+  }
+  
+  .prose-enhanced p {
+    @apply text-lg leading-relaxed mb-6 text-foreground/90;
+  }
+  
+  .prose-enhanced blockquote {
+    @apply border-l-4 border-primary bg-primary/5 pl-6 py-4 my-8 italic rounded-r-lg text-lg;
+  }
+  
+  .prose-enhanced ul,
+  .prose-enhanced ol {
+    @apply space-y-3 mb-6 pl-6;
+  }
+  
+  .prose-enhanced li {
+    @apply text-lg leading-relaxed;
+  }
+  
+  .prose-enhanced code {
+    @apply bg-muted px-2 py-1 rounded text-sm font-mono text-primary;
+  }
+  
+  .prose-enhanced pre {
+    @apply bg-muted p-6 rounded-lg overflow-x-auto my-8;
+  }
+  
+  .prose-enhanced pre code {
+    @apply bg-transparent p-0 text-sm;
+  }
+  
+  .prose-enhanced img {
+    @apply rounded-xl shadow-lg my-10 w-full h-auto;
+  }
+  
+  .prose-enhanced a {
+    @apply text-primary hover:text-primary/80 underline underline-offset-4 decoration-2 transition-colors;
+  }
+  
+  .prose-enhanced strong {
+    @apply font-bold text-foreground;
+  }
+  
+  .prose-enhanced em {
+    @apply italic;
+  }
+  
+  .prose-enhanced hr {
+    @apply border-border my-12;
+  }
+  
+  .prose-enhanced table {
+    @apply w-full border-collapse border border-border my-8;
+  }
+  
+  .prose-enhanced th,
+  .prose-enhanced td {
+    @apply border border-border px-4 py-2 text-left;
+  }
+  
+  .prose-enhanced th {
+    @apply bg-muted font-semibold;
+  }
+}

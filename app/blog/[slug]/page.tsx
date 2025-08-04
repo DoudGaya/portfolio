@@ -3,6 +3,10 @@ import { PortableText } from '@portabletext/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { estimateReadingTime, formatReadingTime, extractTextFromBlocks } from '@/lib/reading-time'
+
+// Revalidate every 60 seconds
+export const revalidate = 60
 
 async function getBlogPost(slug: string) {
   const post = await client.fetch(`
@@ -21,7 +25,9 @@ async function getBlogPost(slug: string) {
         bio
       }
     }
-  `, { slug })
+  `, { slug }, {
+    next: { revalidate: 60 }
+  })
   
   return post
 }
@@ -48,33 +54,102 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 const components = {
   types: {
     image: ({ value }: any) => (
-      <div className="my-8">
+      <div className="my-10">
         <Image
           src={urlFor(value).url()}
           alt={value.alt || ''}
           width={800}
-          height={400}
-          className="rounded-lg w-full h-auto"
+          height={500}
+          className="rounded-xl w-full h-auto shadow-lg"
         />
+        {value.caption && (
+          <p className="text-sm text-muted-foreground text-center mt-3 italic">
+            {value.caption}
+          </p>
+        )}
+      </div>
+    ),
+    code: ({ value }: any) => (
+      <div className="my-8">
+        <pre className="bg-muted p-6 rounded-lg overflow-x-auto">
+          <code className="text-sm font-mono">{value.code}</code>
+        </pre>
       </div>
     ),
   },
   marks: {
     link: ({ children, value }: any) => (
-      <a href={value.href} className="text-primary hover:underline" target="_blank" rel="noopener">
+      <a 
+        href={value.href} 
+        className="text-primary hover:text-primary/80 underline underline-offset-4 decoration-2 transition-colors" 
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
         {children}
       </a>
     ),
+    strong: ({ children }: any) => (
+      <strong className="font-bold text-foreground">{children}</strong>
+    ),
+    em: ({ children }: any) => (
+      <em className="italic">{children}</em>
+    ),
+    code: ({ children }: any) => (
+      <code className="bg-muted px-2 py-1 rounded text-sm font-mono text-primary">
+        {children}
+      </code>
+    ),
   },
   block: {
-    h1: ({ children }: any) => <h1 className="text-3xl font-bold my-6">{children}</h1>,
-    h2: ({ children }: any) => <h2 className="text-2xl font-semibold my-5">{children}</h2>,
-    h3: ({ children }: any) => <h3 className="text-xl font-semibold my-4">{children}</h3>,
-    h4: ({ children }: any) => <h4 className="text-lg font-semibold my-3">{children}</h4>,
-    blockquote: ({ children }: any) => (
-      <blockquote className="border-l-4 border-primary pl-4 py-2 my-4 italic bg-muted/50">
+    normal: ({ children }: any) => (
+      <p className="text-lg leading-relaxed mb-6 text-foreground">{children}</p>
+    ),
+    h1: ({ children }: any) => (
+      <h1 className="text-4xl font-bold my-8 text-foreground border-b border-border pb-4">
         {children}
+      </h1>
+    ),
+    h2: ({ children }: any) => (
+      <h2 className="text-3xl font-semibold my-8 text-foreground">
+        {children}
+      </h2>
+    ),
+    h3: ({ children }: any) => (
+      <h3 className="text-2xl font-semibold my-6 text-foreground">
+        {children}
+      </h3>
+    ),
+    h4: ({ children }: any) => (
+      <h4 className="text-xl font-semibold my-5 text-foreground">
+        {children}
+      </h4>
+    ),
+    blockquote: ({ children }: any) => (
+      <blockquote className="border-l-4 border-primary bg-primary/5 pl-6 py-4 my-8 italic rounded-r-lg">
+        <div className="text-lg text-foreground/90">
+          {children}
+        </div>
       </blockquote>
+    ),
+  },
+  list: {
+    bullet: ({ children }: any) => (
+      <ul className="list-disc list-inside space-y-3 my-6 pl-4">
+        {children}
+      </ul>
+    ),
+    number: ({ children }: any) => (
+      <ol className="list-decimal list-inside space-y-3 my-6 pl-4">
+        {children}
+      </ol>
+    ),
+  },
+  listItem: {
+    bullet: ({ children }: any) => (
+      <li className="text-lg leading-relaxed">{children}</li>
+    ),
+    number: ({ children }: any) => (
+      <li className="text-lg leading-relaxed">{children}</li>
     ),
   },
 }
@@ -87,71 +162,127 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     notFound()
   }
 
+  // Calculate reading time
+  const textContent = extractTextFromBlocks(post.body)
+  const readingTime = estimateReadingTime(textContent)
+
   return (
     <main className="bg-background min-h-screen">
-      <div className="max-w-3xl mx-auto py-12 px-4">
+      <div className="max-w-6xl mx-auto py-16 px-4">
         {/* Back to Blog */}
         <Link 
           href="/blog" 
-          className="inline-flex items-center text-muted-foreground hover:text-primary mb-8 transition-colors"
+          className="inline-flex items-center text-muted-foreground hover:text-primary mb-12 transition-colors text-lg font-medium"
         >
           ← Back to Blog
         </Link>
 
         {/* Article Header */}
-        <article>
-          <header className="mb-8">
-            <div className="flex flex-wrap gap-2 mb-4">
-              {post.categories?.map((category: string) => (
-                <span 
-                  key={category} 
-                  className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-md"
-                >
-                  {category}
-                </span>
-              ))}
-            </div>
+        <article className="max-w-4xl mx-auto">
+          <header className="mb-12 text-center">
+            {/* Categories */}
+            {post.categories && post.categories.length > 0 && (
+              <div className="flex flex-wrap gap-2 justify-center mb-6">
+                {post.categories.map((category: string) => (
+                  <span 
+                    key={category} 
+                    className="px-4 py-2 bg-primary/10 text-primary text-sm font-medium rounded-full border border-primary/20"
+                  >
+                    {category}
+                  </span>
+                ))}
+              </div>
+            )}
             
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">{post.title}</h1>
+            {/* Title */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight text-foreground">
+              {post.title}
+            </h1>
             
-            <div className="flex items-center gap-4 text-muted-foreground mb-6">
+            {/* Excerpt */}
+            {post.excerpt && (
+              <div className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-4xl mx-auto mb-8 border-l-4 border-primary pl-6 italic">
+                {post.excerpt}
+              </div>
+            )}
+            
+            {/* Author and Date */}
+            <div className="flex items-center justify-center space-x-6 text-muted-foreground mb-10">
               {post.author?.image && (
                 <Image
-                  src={urlFor(post.author.image).width(40).height(40).url()}
+                  src={urlFor(post.author.image).width(50).height(50).url()}
                   alt={post.author.name}
-                  width={40}
-                  height={40}
-                  className="rounded-full"
+                  width={50}
+                  height={50}
+                  className="rounded-full ring-2 ring-primary/20"
                 />
               )}
-              <div>
-                <p className="font-medium text-foreground">{post.author?.name}</p>
-                <p className="text-sm">
-                  {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
-                </p>
+              <div className="text-left">
+                <p className="font-semibold text-foreground text-lg">{post.author?.name}</p>
+                <div className="flex items-center space-x-3 text-base">
+                  <time>
+                    {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}
+                  </time>
+                  <span>•</span>
+                  <span>{formatReadingTime(readingTime)}</span>
+                </div>
               </div>
             </div>
 
+            {/* Hero Image */}
             {post.mainImage && (
-              <div className="relative h-64 md:h-96 w-full mb-8">
+              <div className="relative h-64 md:h-96 lg:h-[500px] w-full mb-12 rounded-xl overflow-hidden shadow-2xl">
                 <Image
                   src={urlFor(post.mainImage).url()}
                   alt={post.mainImage.alt || post.title}
                   fill
-                  className="object-cover rounded-lg"
+                  className="object-cover"
                 />
               </div>
             )}
           </header>
 
           {/* Article Content */}
-          <div className="prose prose-lg max-w-none">
+          <div className="prose prose-xl prose-enhanced max-w-none leading-relaxed">
             <PortableText value={post.body} components={components} />
           </div>
+
+          {/* Author Bio Footer */}
+          {post.author && (
+            <footer className="mt-16 pt-12 border-t border-border">
+              <div className="bg-muted/30 rounded-xl p-8">
+                <div className="flex items-start space-x-6">
+                  <div className="flex-shrink-0">
+                    {post.author.image ? (
+                      <Image
+                        src={urlFor(post.author.image).width(80).height(80).url()}
+                        alt={post.author.name}
+                        width={80}
+                        height={80}
+                        className="rounded-full ring-4 ring-primary/20"
+                      />
+                    ) : (
+                      <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white font-bold text-2xl">
+                        {post.author.name.charAt(0).toUpperCase()}
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex-grow">
+                    <h3 className="font-bold text-xl mb-2">About {post.author.name}</h3>
+                    {post.author.bio && (
+                      <div className="text-muted-foreground text-lg leading-relaxed">
+                        <PortableText value={post.author.bio} />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </footer>
+          )}
         </article>
 
         {/* Call to Action */}
