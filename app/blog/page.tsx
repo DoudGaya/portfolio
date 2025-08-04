@@ -33,9 +33,9 @@ export default async function BlogPage() {
 
   return (
     <main className="bg-background min-h-screen">
-      <div className="max-w-6xl mx-auto py-16 px-4">
+      <div className="max-w-6xl mx-auto py-16">
         {/* Header */}
-        <section className="text-center mb-16">
+        <section className="text-center mb-10">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Latest Insights
           </h1>
@@ -68,7 +68,7 @@ export default async function BlogPage() {
                   {post.categories?.slice(0, 2).map((category: string) => (
                     <span 
                       key={category} 
-                      className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full"
+                    className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full"
                     >
                       {category}
                     </span>

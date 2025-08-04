@@ -17,7 +17,7 @@ export default function Home() {
     "name": "Abdulrahman Dauda Gaya",
     "jobTitle": "Full Stack Developer & CTO",
     "description": "Full-stack developer & CTO with 8+ years building SaaS, fintech, and real estate platforms",
-    "url": "https://doudgaya.com",
+    "url": "https://doudgaya.xyz",
     "sameAs": [
       "https://github.com/doudgaya",
       "https://linkedin.com/in/doudgaya",
@@ -118,7 +118,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-16 px-4">
+      <section id="services" className="py-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">How I Can Help Your Startup</h2>
@@ -169,7 +169,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 px-4">
+      <section className="py-16 ">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">What Clients Say</h2>

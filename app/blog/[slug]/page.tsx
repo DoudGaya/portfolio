@@ -42,12 +42,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {}
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://doudgaya.xyz'
   const url = `${baseUrl}/blog/${slug}`
   
   // Generate OG image URL
   const imageUrl = post.mainImage 
-    ? urlFor(post.mainImage).width(1200).height(630).url()
+    ? urlFor(post.mainImage)
+        .width(1200)
+        .height(630)
+        .fit('crop')
+        .crop('center')
+        .format('jpg')
+        .quality(90)
+        .url()
     : `${baseUrl}/api/og?title=${encodeURIComponent(post.title)}&author=${encodeURIComponent(post.author?.name || 'Abdulrahman Dauda Gaya')}&category=${encodeURIComponent(post.categories?.[0] || 'Web Development')}`
 
   return {
@@ -202,7 +209,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const readingTime = estimateReadingTime(textContent)
 
   // Generate share URL
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://doudgaya.xyz'
   const shareUrl = `${baseUrl}/blog/${slug}`
 
   return (
@@ -215,7 +222,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       />
 
       <main className="bg-background min-h-screen">
-      <div className="max-w-6xl mx-auto py-16 px-4">
+      <div className="max-w-6xl mx-auto py-16">
         {/* Back to Blog */}
         <Link 
           href="/blog" 
@@ -242,13 +249,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             )}
             
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight text-foreground">
+            <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight text-foreground">
               {post.title}
             </h1>
             
             {/* Excerpt */}
             {post.excerpt && (
-              <div className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-4xl mx-auto mb-8 border-l-4 border-primary pl-6 italic">
+              <div className="text-sm md:text-2xl text-muted-foreground leading-relaxed max-w-4xl mx-auto mb-8 border-l-4 border-primary pl-6 italic">
                 {post.excerpt}
               </div>
             )}
@@ -284,10 +291,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {post.mainImage && (
               <div className="relative h-64 md:h-96 lg:h-[500px] w-full mb-12 rounded-xl overflow-hidden shadow-2xl">
                 <Image
-                  src={urlFor(post.mainImage).url()}
+                  src={urlFor(post.mainImage)
+                    .width(1200)
+                    .height(600)
+                    .fit('crop')
+                    .crop('center')
+                    .format('webp')
+                    .quality(85)
+                    .url()}
                   alt={post.mainImage.alt || post.title}
                   fill
                   className="object-cover"
+                  priority
                 />
               </div>
             )}
@@ -311,7 +326,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {post.author && (
             <footer className="mt-16 pt-12 border-t border-border">
               <div className="bg-muted/30 rounded-xl p-8">
-                <div className="flex items-start space-x-6">
+                <div className="flex flex-col md:flex-row justify-center md:justify-start items-center text-center space-y-6">
                   <div className="flex-shrink-0">
                     {post.author.image ? (
                       <Image
@@ -328,9 +343,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     )}
                   </div>
                   <div className="flex-grow">
-                    <h3 className="font-bold text-xl mb-2">About {post.author.name}</h3>
+                    <h3 className="font-bold text-md mb-2">About {post.author.name}</h3>
                     {post.author.bio && (
-                      <div className="text-muted-foreground text-lg leading-relaxed">
+                      <div className="text-muted-foreground text-sm line-clamp-3 leading-relaxed">
                         <PortableText value={post.author.bio} />
                       </div>
                     )}

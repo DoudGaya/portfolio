@@ -29,7 +29,7 @@ Generate a secure random string for the webhook secret.
 4. Click **Create webhook**
 5. Configure:
    - **Name**: Portfolio Revalidation
-   - **URL**: `https://yourdomain.com/api/revalidate`
+   - **URL**: `https://doudgaya.xyz/api/revalidate`
    - **Dataset**: production
    - **HTTP method**: POST
    - **API version**: v2021-06-07

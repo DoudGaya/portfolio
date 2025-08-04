@@ -7,7 +7,7 @@ import { Navbar } from '@/components/Navbar'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://doudgaya.xyz'),
   title: 'Hire Full Stack Developer | Abdulrahman Dauda Gaya - Next.js SaaS Expert',
   description: 'Nigerian software developer & CTO specializing in full-stack web development for startups. Build fast, scalable SaaS, fintech & real estate platforms. $5K-$30K projects.',
   keywords: 'hire full stack developer, Next.js SaaS expert, Nigerian software developer for startups, full stack web developer, React Node.js developer, startup CTO, SaaS development',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Hire Full Stack Developer | Abdulrahman Dauda Gaya',
     description: 'Full-stack developer & CTO with 8+ years building SaaS, fintech, and real estate platforms. Turn your ideas into production-ready applications.',
-    url: 'https://doudgaya.com',
+    url: 'https://doudgaya.xyz',
     siteName: 'Abdulrahman Dauda Gaya - Full Stack Developer',
     images: [
       {
@@ -67,7 +67,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
         >
-          <div className="flex min-h-screen flex-col py-16 px-10">
+          <div className="flex min-h-screen flex-col py-4 px-6 ">
           <Navbar />
             {children}
           </div>

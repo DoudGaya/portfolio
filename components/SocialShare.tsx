@@ -58,7 +58,7 @@ export default function SocialShare({ url, title, description }: SocialShareProp
   }
 
   return (
-    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-6 bg-muted/30 rounded-xl border">
+    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-6 bg-muted/30 rounded-xl border dark:border-gray-700">
       <div className="flex items-center gap-2">
         <Share2 className="w-5 h-5 text-muted-foreground" />
         <span className="font-medium text-foreground">Share this article</span>

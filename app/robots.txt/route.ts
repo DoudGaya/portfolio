@@ -5,7 +5,7 @@ export function GET(): Response {
 Allow: /
 
 # Sitemaps
-Sitemap: ${process.env.NEXT_PUBLIC_SITE_URL || 'https://doudgaya.com'}/sitemap.xml
+Sitemap: ${process.env.NEXT_PUBLIC_SITE_URL || 'https://doudgaya.xyz'}/sitemap.xml
 
 # Disallow admin routes
 Disallow: /studio

@@ -5,7 +5,7 @@
 ### 1. Twitter Card Validator
 Test your blog post social sharing with Twitter's Card Validator:
 - Go to: https://cards-dev.twitter.com/validator
-- Enter your blog post URL (e.g., `https://yourdomain.com/blog/your-post-slug`)
+- Enter your blog post URL (e.g., `https://doudgaya.xyz/blog/your-post-slug`)
 - Click "Preview card" to see how it will appear
 
 ### 2. Facebook Sharing Debugger  
@@ -54,10 +54,10 @@ Test with LinkedIn's Post Inspector:
 
 Make sure your `.env.local` contains:
 ```bash
-NEXT_PUBLIC_SITE_URL=https://yourdomain.com
+NEXT_PUBLIC_SITE_URL=https://doudgaya.xyz
 ```
 
-Replace `https://yourdomain.com` with your actual domain.
+Replace `https://doudgaya.xyz` with your actual domain.
 
 ## Updating Your Twitter Handle
 
