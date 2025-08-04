@@ -4,6 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { estimateReadingTime, formatReadingTime, extractTextFromBlocks } from '@/lib/reading-time'
+import SocialShare from '@/components/SocialShare'
+import FloatingSocialShare from '@/components/FloatingSocialShare'
 
 // Revalidate every 60 seconds
 export const revalidate = 60
@@ -40,13 +42,46 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {}
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com'
+  const url = `${baseUrl}/blog/${slug}`
+  
+  // Generate OG image URL
+  const imageUrl = post.mainImage 
+    ? urlFor(post.mainImage).width(1200).height(630).url()
+    : `${baseUrl}/api/og?title=${encodeURIComponent(post.title)}&author=${encodeURIComponent(post.author?.name || 'Abdulrahman Dauda Gaya')}&category=${encodeURIComponent(post.categories?.[0] || 'Web Development')}`
+
   return {
     title: `${post.title} | Abdulrahman Dauda Gaya`,
-    description: post.excerpt,
+    description: post.excerpt || `Read ${post.title} by ${post.author?.name || 'Abdulrahman Dauda Gaya'}`,
+    keywords: post.categories?.join(', ') || 'web development, SaaS, startup',
+    authors: [{ name: post.author?.name || 'Abdulrahman Dauda Gaya' }],
     openGraph: {
       title: post.title,
-      description: post.excerpt,
-      images: post.mainImage ? [urlFor(post.mainImage).url()] : [],
+      description: post.excerpt || `Read ${post.title} by ${post.author?.name || 'Abdulrahman Dauda Gaya'}`,
+      url,
+      siteName: 'Abdulrahman Dauda Gaya',
+      type: 'article',
+      publishedTime: post.publishedAt,
+      authors: [post.author?.name || 'Abdulrahman Dauda Gaya'],
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: post.mainImage?.alt || post.title,
+        }
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt || `Read ${post.title} by ${post.author?.name || 'Abdulrahman Dauda Gaya'}`,
+      images: [imageUrl],
+      creator: '@doudgaya', // Replace with your Twitter handle
+      site: '@doudgaya', // Replace with your Twitter handle
+    },
+    alternates: {
+      canonical: url,
     },
   }
 }
@@ -166,8 +201,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const textContent = extractTextFromBlocks(post.body)
   const readingTime = estimateReadingTime(textContent)
 
+  // Generate share URL
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com'
+  const shareUrl = `${baseUrl}/blog/${slug}`
+
   return (
-    <main className="bg-background min-h-screen">
+    <>
+      {/* Floating Social Share */}
+      <FloatingSocialShare 
+        url={shareUrl}
+        title={post.title}
+        description={post.excerpt || `Read ${post.title} by ${post.author?.name || 'Abdulrahman Dauda Gaya'}`}
+      />
+
+      <main className="bg-background min-h-screen">
       <div className="max-w-6xl mx-auto py-16 px-4">
         {/* Back to Blog */}
         <Link 
@@ -251,6 +298,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <PortableText value={post.body} components={components} />
           </div>
 
+          {/* Social Share */}
+          <div className="mt-12 mb-12">
+            <SocialShare 
+              url={shareUrl}
+              title={post.title}
+              description={post.excerpt || `Read ${post.title} by ${post.author?.name || 'Abdulrahman Dauda Gaya'}`}
+            />
+          </div>
+
           {/* Author Bio Footer */}
           {post.author && (
             <footer className="mt-16 pt-12 border-t border-border">
@@ -300,5 +356,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </section>
       </div>
     </main>
+    </>
   )
 }
