@@ -6,7 +6,10 @@ import nillarDark from '@/public/nillar_dark.png'
 import nillarLight from '@/public/nillar_light.png'
 import plasticDark from '@/public/plastic_dark.png'
 import plasticLight from '@/public/plastic_light.png'
+import ccsa from '@/public/ccsa.png'
 import { FaLaravel } from "react-icons/fa";
+import metrohust from '@/public/metrohuts.png'
+import jictde from '@/public/jictde.png'
 import { SiTailwindcss } from "react-icons/si";
 import { TbBrandNextjs } from "react-icons/tb";
 import { SiVercel } from "react-icons/si";
@@ -21,6 +24,8 @@ import {AiOutlineGithub} from 'react-icons/ai'
 import { RiTwitterXFill } from 'react-icons/ri'
 import stablebricsWhite from '@/public/stablebricks-white.png'
 import stablebricksBlack from '@/public/stablebrics-black.png'
+import stb from '@/public/stb.png'
+import npm from '@/public/npm.png'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -48,8 +53,8 @@ export const projects = [
   {
     id: '1',
     name: 'Stablebricks',
-    imgLight: stablebricsWhite,
-    imgDark: stablebricksBlack,
+    imgLight: stb,
+    imgDark: stb,
     url: 'https://stablebricks.com',
     description: 'Real Estate Investment Platform',
     longDescription: 'A comprehensive real estate investment platform enabling fractional property ownership and crowdfunded investments across Nigeria.',
@@ -58,17 +63,39 @@ export const projects = [
   },
   {
     id: '2',
-    name: 'Chemcider Inc',
-    url: 'https://chemcider.com',
-    imgLight: chemciderLight,
-    imgDark: chemciderDark,
-    description: 'Medical & Scientific Supply Chain',
-    longDescription: 'B2B platform connecting medical institutions with verified suppliers of scientific equipment and pharmaceutical products.',
-    techStack: ['React', 'Node.js', 'MongoDB', 'AWS', 'PayPal'],
-    impact: 'Streamlined procurement for 50+ hospitals'
+    name: 'MetroHuts',
+    imgLight: metrohust, // You can replace with actual MetroHuts logo when available
+    imgDark: metrohust,
+    url: 'https://metrohuts.com',
+    description: 'Real Estate Property Listings Platform',
+    longDescription: 'Your trusted partner in finding the perfect home. With years of experience and a passion for real estate, we make your property dreams a reality through comprehensive property listings and seamless user experience.',
+    techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Supabase'],
+    impact: 'Connecting property seekers with dream homes across Nigeria'
   },
   {
     id: '3',
+    name: 'Jigawa State ICT & Digital Economy',
+    imgLight: jictde, // You can replace with actual government logo when available
+    imgDark: jictde,
+    url: 'https://ict.jg.gov.ng/',
+    description: 'Government Digital Transformation Portal',
+    longDescription: 'Official ICT and Digital Economy service portal for Jigawa State Government. Mission: To transform Jigawa into a leading digital economy in Nigeria by 2025, fostering innovation, creating job opportunities, and positioning the state at the forefront of technological advancement.',
+    techStack: ['Next.js', 'React', 'TypeScript', 'Government APIs', 'PostgreSQL'],
+    impact: 'Serving 5.8M+ citizens, advancing digital governance across Jigawa State'
+  },
+  {
+    id: '4',
+    name: 'CCSA Cosmopolitan',
+    url: 'https://ccsa.cosmopolitan.edu.ng',
+    imgLight: ccsa,
+    imgDark: ccsa,
+    description: 'Agricultural Research Center',
+    longDescription: 'Driving innovation in agricultural research and development.',
+    techStack: ['React', 'NextJS', 'TypeScript', 'Vercel', 'GraphQL'],
+    impact: 'Advancing agricultural research and innovation'
+  },
+  {
+    id: '5',
     name: 'Nillar Magazines',
     url: 'https://nillar.com',
     imgLight: nillarLight,
@@ -79,15 +106,15 @@ export const projects = [
     impact: '10K+ monthly readers, 95% uptime'
   },
   {
-    id: '4',
-    name: 'Plastic Surgeons Network',
-    imgLight: plasticLight,
-    imgDark: plasticDark,
-    url: 'https://plasticsurgeona.com',
-    description: 'Medical Professional Network',
-    longDescription: 'Platform connecting patients with certified plastic surgeons in Turkey, featuring booking system, reviews, and consultation management.',
-    techStack: ['Vue.js', 'Laravel', 'MySQL', 'Cloudinary', 'Stripe'],
-    impact: '500+ successful consultations booked'
+    id: '6',
+    name: 'NPM-Packager AI',
+    imgLight: npm, // You can replace with actual NPM-Packager logo when available
+    imgDark: npm,
+    url: 'https://npm.doudgaya.xyz',
+    description: 'AI-Powered NPM Package Creation Platform',
+    longDescription: 'Create and deploy NPM packages with AI in minutes. NPM-Packager helps you build, document, and publish NPM packages using AI. Features AI package generation, one-click publishing to NPM and GitHub, and comprehensive package management with analytics.',
+    techStack: ['Next.js', 'TypeScript', 'AI/ML', 'NPM API', 'GitHub API'],
+    impact: 'Streamlining NPM package development and deployment for developers worldwide'
   },
 ]
 
