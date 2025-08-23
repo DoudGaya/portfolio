@@ -2,6 +2,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { Analytics } from "@vercel/analytics/next"
 import { Navbar } from '@/components/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -69,6 +70,7 @@ export default function RootLayout({
         >
           <div className="flex min-h-screen flex-col py-4 px-6 ">
           <Navbar />
+          <Analytics />
             {children}
           </div>
         </ThemeProvider>
